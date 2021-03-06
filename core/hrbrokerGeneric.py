@@ -3,7 +3,6 @@ class HRBrokerGeneric:
     def gera_resposta(self, mensagem):
         response = {}
         status = 200
-        print(mensagem)
         if mensagem is None:
             status = 400
             mensagem = "ERR#04: Erro ao processar"
