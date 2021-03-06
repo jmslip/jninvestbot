@@ -1,6 +1,6 @@
 from flask_restplus import Resource
 from services.infoAtivos import infoAtivos
-from core.hrbrokerGeneric import hrbrokerGeneric
+from core.jninvestbotgeneric import jninvestbot_generic
 
 from core.server import server
 
@@ -15,4 +15,4 @@ class Ativos(Resource):
         response = api.payload
         nome = response["nome"]
 
-        return hrbrokerGeneric.gera_resposta(mensagem=infoAtivos.pesquisa(nome)) 
+        return jninvestbot_generic.gera_resposta(mensagem=infoAtivos.pesquisa(nome)) 

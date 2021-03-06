@@ -1,4 +1,4 @@
-class HRBrokerGeneric:
+class JnInvestBotGeneric:
 
     def gera_resposta(self, mensagem):
         response = {}
@@ -17,4 +17,4 @@ class HRBrokerGeneric:
         
         return response
 
-hrbrokerGeneric = HRBrokerGeneric()
+jninvestbot_generic = JnInvestBotGeneric()
