@@ -7,7 +7,7 @@ class Server:
         self.app = Flask(__name__)
         self.api = Api(
             self.app,
-            version='0.1-SNAPSHOT',
+            version='0.0.1',
             title='HR Broker - Robot',
             description='Api de web scraping e cálculos para mercado financeiro',
             doc='/doc'
@@ -15,7 +15,7 @@ class Server:
 
     def run(self):
         self.app.run(
-            debug=True
+            debug=False
         )
 
 
