@@ -1,5 +1,7 @@
 from flask_restplus import Resource
+
 from services.infoAtivos import infoAtivos
+from services.rotinas import rotinas
 from core.jninvestbotgeneric import jninvestbot_generic
 
 from core.server import server
@@ -16,3 +18,11 @@ class Ativos(Resource):
         nome = response["nome"]
 
         return jninvestbot_generic.gera_resposta(mensagem=infoAtivos.pesquisa(nome))
+
+@api.route('/atualiza-historico')
+class Rotina(Resource):
+    @staticmethod
+    def post():
+        response = api.payload
+        ativos = response['ativos']
+        return rotinas.atualiza_historico(ativos)
