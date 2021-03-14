@@ -1,4 +1,6 @@
 from core.server import server
-import controllers.ativos
+
+import resources.ativos
+import resources.calculos
 
 server.run()

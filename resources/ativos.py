@@ -11,8 +11,8 @@ api = server.api
 @api.route('/ativos')
 class Ativos(Resource):
     @staticmethod
-    def post():
+    def get():
         response = api.payload
         nome = response["nome"]
 
-        return jninvestbot_generic.gera_resposta(mensagem=infoAtivos.pesquisa(nome)) 
+        return jninvestbot_generic.gera_resposta(mensagem=infoAtivos.pesquisa(nome))
