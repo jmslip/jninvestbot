@@ -1,4 +1,5 @@
 import investpy
+import json
 
 
 class InfoAtivos:
@@ -17,21 +18,25 @@ class InfoAtivos:
         except ValueError:
             return "ERR#003: Ativo "+ ativo + " não encontrado"
 
-        if to_dict:
-            values = {}
-            for dado in dados:
-                values = dado.__dict__
+        for dado in dados[:1]:
+            if to_dict:
+                return dado.__dict__
 
-            return values
         return dados
 
-    def historico(self, ativo, de_data, ate_data):
-        pesquisa = self.pesquisa(ativo, to_dict=False)
+    def historico(self, ativo, de_data=None, ate_data=None, historico_recente=False, to_dict=False, to_json=True):
+        pesquisa = self.pesquisa(ativo, to_dict=to_dict)
 
         historico = 0
         for hist in pesquisa:
-            historico = hist.retrieve_historical_data(from_date=de_data, to_date=ate_data)
+            if historico_recente:
+                historico = hist.retrieve_recent_data().tail(2)
+            else:
+                historico = hist.retrieve_historical_data(from_date=de_data, to_date=ate_data)
         
+        if to_json:
+            return json.loads(historico.to_json(orient='index', date_format='iso', compression='gzip'))
+
         return historico
 
 infoAtivos = InfoAtivos()
