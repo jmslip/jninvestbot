@@ -1,0 +1,5 @@
+## Criar pasta instance dentro da raiz do projeto e renomar este arquivo para config.py, dentro da pasta criada.
+ENV='development'
+TESTING=(True if ENV == 'development' else False)
+DEBUG=(True if ENV == 'development' else False)
+SECRET_KEY='your-key'
